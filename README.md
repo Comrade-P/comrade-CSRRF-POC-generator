@@ -33,12 +33,19 @@ Features**********>>>>>>>
 ***>>>>>Run the tool using Docker:
 
 STEPS:-
-1..docker build -t csrf-poc-generator .
+
+
+1..git clone https://github.com/Comrade-P/comrade-CSRRF-POC-generator.git
+
+
+2..cd comrade-CSRRF-POC-generator
+
+3..docker build -t csrf-poc-generator .
 docker run -it csrf-poc-generator
 
 
-2..Paste the Burp Suite HTTP request
+4..Paste the Burp Suite HTTP request
 
-3..Press Ctrl+D (Linux/macOS) or Ctrl+Z + Enter (Windows)
+5..Press Ctrl+D (Linux/macOS) or Ctrl+Z + Enter (Windows)
 
-4..CSRF PoC HTML will be generated
+6..CSRF PoC HTML will be generated
