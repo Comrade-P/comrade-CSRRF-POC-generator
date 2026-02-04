@@ -14,30 +14,27 @@ print(Fore.WHITE +
     "or Ctrl+Z + Enter (Windows):\n" + Style.RESET_ALL
 )
 
-# Read full request
 request = sys.stdin.read()
 
-# Split headers and body
+
 headers, body = request.split("\n\n", 1)
 lines = headers.splitlines()
 
-# Get method and path
-method, path = lines[0].split()[:2]
+method_got, path_got = lines[0].split()[:2]
 
-# Get host
-host = ""
+
+comrade_host = ""
 for line in lines:
     if line.lower().startswith("host:"):
-        host = line.split(":", 1)[1].strip()
+        comrade_host = line.split(":", 1)[1].strip()
         break
 
-# Parse POST parameters
+
 params = parse_qs(body.strip())
 
-# Build HTML (same required format)
 html = "<html>\n"
 html += "\t<body>\n"
-html += f'\t\t<form method="{method}" action="https://{host}{path}">\n'
+html += f'\t\t<form method="{method_got}" action="https://{comrade_host}{path_got}">\n'
 
 for key, values in params.items():
     html += f'\t\t\t<input type="hidden" name="{key}" value="{values[0]}"/>\n'
@@ -49,3 +46,4 @@ html += "</html>"
 
 print(Fore.WHITE +"\n--- COMRADE CSRF PoC GENERATED ---\n"+ Style.RESET_ALL)
 print(html)
+
